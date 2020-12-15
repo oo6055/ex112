@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void reset(View view) {
         counter = 0;
         et.setText("");
+        tv.setText(String.valueOf(counter));
         save();
 
     }
