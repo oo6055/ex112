@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         String str = settings.getString("str","");
         counter = settings.getInt("counter",0);
         et.setText(str);
-        tv.setText(counter);
+        tv.setText(String.valueOf(counter));
     }
 
     public void count(View view) {
@@ -39,14 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void reset(View view) {
         counter = 0;
-        tv.setText(String.valueOf(counter));
+        et.setText("");
+        save();
+
     }
 
-    public void exit(View view) {
+    private void save() {
         SharedPreferences.Editor editor = getSharedPreferences("PREFS_NAME", MODE_PRIVATE).edit();
         editor.putString("str", et.getText().toString());
         editor.putInt("counter",counter);
         editor.commit();
+    }
+
+    public void exit(View view) {
+        save();
         finish();
     }
 }
