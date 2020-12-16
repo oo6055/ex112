@@ -15,9 +15,9 @@ import android.widget.TextView;
 /**
  * The type Main activity.
  *
- *  @author Ori Ofek <oriofek106@gmail.com> 23/11/2020
+ *  @author Ori Ofek <oriofek106@gmail.com> 14/12/2020
  *  @version 1.0
- *  @since 23/11/2020
+ *  @since 14/12/2020
  *  sort description:
  *  this is the activty the implement the exericse that my teacher gave...
  */
@@ -41,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void getData() {
         SharedPreferences settings = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
-        String str = settings.getString("str","");
         counter = settings.getInt("counter",0);
-        et.setText(str);
+        et.setText(settings.getString("str",""));
         tv.setText(String.valueOf(counter));
     }
 
@@ -72,10 +71,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void reset(View view) {
         counter = 0;
-        et.setText("");
         tv.setText(String.valueOf(counter));
-        save();
-
     }
 
      /**
